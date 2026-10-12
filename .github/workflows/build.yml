@@ -23,7 +23,9 @@ jobs:
           packages: 'platforms;android-37.2 build-tools;37.0.0'
 
       - name: Build release APK
-        run: ./gradlew :app:assembleRelease --no-daemon --stacktrace
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleRelease --no-daemon --stacktrace
 
       - name: Sign APK
         run: bash .ci/sign.sh
